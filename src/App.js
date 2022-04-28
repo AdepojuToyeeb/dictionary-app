@@ -8,14 +8,13 @@ import Header from "./Components/Header";
 function App() {
   const [definition, setDefinition] = useState([]);
   const [word, setWord] = useState("");
+  const [random, setRandom] = useState([]);
 
   const dict = async () => {
     try {
       const data = await axios.get(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
       );
-      // console.log(data.data);
-  
       setDefinition(data.data);
     } catch (error) {
       console.log(error);
