@@ -1,38 +1,36 @@
-import { Container } from "@mui/material";
+// import { Container } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import Header from "./Components/header";
+import Definitions from "./Components/Definitions";
+import Header from "./Components/Header";
 
 function App() {
-  const [meaning, setMeaning] = useState([]);
+  const [definition, setDefinition] = useState([]);
   const [word, setWord] = useState("");
 
   const dict = async () => {
     try {
       const data = await axios.get(
-        "https://api.dictionaryapi.dev/api/v2/entries/en/word"
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
       );
-      // const data = await response.json();
-      // console.log(data);
-      setMeaning(data.data);
+      // console.log(data.data);
+  
+      setDefinition(data.data);
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(meaning);
   useEffect(() => {
     dict();
-  }, []);
+  }, [word]);
 
   return (
     <div className="container">
-      <Container
-        maxWidth="md"
-        style={{ display: "flex", flexDirection: "column", height: "100vh" }}
-      >
+      <div className="App"> 
         <Header word={word} setWord={setWord} />
-      </Container>
+        {definition && <Definitions word={word} definition={definition} />}
+      </div>
     </div>
   );
 }
