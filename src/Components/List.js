@@ -1,27 +1,20 @@
 import React from "react";
-import Phonetics from "./Phonetics";
-import Meaning from "./Meaning";
+import Define from "./Define";
+import Synonyms from "./Synonyms";
+import './List.css'
 
-const List = ({ meanings, phonetics, word }) => {
-  return (
-    <>
-      <div className="phonetics">
-        <h1>{word}</h1>
+const List = ({ mean }) => {
+  return mean.map((item, index) => {
+    console.log(item);
+    return (
+      <>
+        <h2 className="speech-header" key={index}>{item.partOfSpeech}</h2>
+        <Define key={index} item= {item}/>
+        <Synonyms key={index} item= {item}/>
+      </>
+    );
+  });
 
-        {phonetics.map((phone, index) => {
-          return (
-            <div className="Phone">
-              <Phonetics key={index} {...phone} />
-            </div>
-          );
-        })}
-      </div>
-      <hr />
-      {meanings.map((meaning, index) => {
-        return <Meaning key={index} {...meaning} />;
-      })}
-    </>
-  );
 };
 
 export default List;

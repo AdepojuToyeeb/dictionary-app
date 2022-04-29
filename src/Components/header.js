@@ -1,29 +1,37 @@
-import { ThemeProvider } from "@emotion/react";
-import { createTheme, TextField } from "@mui/material";
+import { TextField, ThemeProvider } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 import React from "react";
+import "./Header.css";
+import { debounce } from "lodash";
 
-const header = ({ word, setWord }) => {
+const Header = ({
+  setWord,
+  word,
+}) => {
   const darkTheme = createTheme({
     palette: {
       primary: {
-        main: "#fff",
+        main:  "#fff",
       },
-      mode: "dark",
+      type: "dark",
     },
   });
 
+  const handleText = debounce((text) => {
+    setWord(text);
+  }, 500);
+
   return (
     <div className="header">
-      <span className="title">{word ? word : "search words"}</span>
+      <span className="title">{word ? word : "Word Hunt"}</span>
       <div className="inputs">
         <ThemeProvider theme={darkTheme}>
           <TextField
             className="search"
-            id="standard-basic"
-            label="Search"
-            variant="standard"
-            value={word}
-            onChange={(e) => setWord(e.target.value)}
+            id="filled-basic"
+            // value={word}
+            label="Search a Word"
+            onChange={(e) => handleText(e.target.value)}
           />
         </ThemeProvider>
       </div>
@@ -31,4 +39,4 @@ const header = ({ word, setWord }) => {
   );
 };
 
-export default header;
+export default Header;

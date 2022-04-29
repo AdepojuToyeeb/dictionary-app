@@ -1,4 +1,5 @@
-// import { Container } from "@mui/material";
+import { Container } from "@mui/material";
+// import { grey } from "@mui/material/colors";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./App.css";
@@ -7,10 +8,10 @@ import Header from "./Components/Header";
 
 function App() {
   const [definition, setDefinition] = useState([]);
-  const [word, setWord] = useState("");
-  const [random, setRandom] = useState([]);
+  const [word, setWord] = useState("kef");
 
-  const dict = async () => {
+
+  const dictionary = async () => {
     try {
       const data = await axios.get(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
@@ -21,15 +22,39 @@ function App() {
     }
   };
   useEffect(() => {
-    dict();
+    dictionary();
   }, [word]);
 
   return (
-    <div className="container">
-      <div className="App"> 
-        <Header word={word} setWord={setWord} />
-        {definition && <Definitions word={word} definition={definition} />}
-      </div>
+    <div
+      className="App"
+      style={{
+        height: "100vh",
+        backgroundColor: "#282c34",
+        color: "white",
+        transition: "all 0.5s linear",
+      }}
+    >
+      <Container
+        maxWidth="md"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          height: "100vh",
+          justifyContent: "space-evenly",
+        }}
+      >
+        <div
+          style={{ position: "absolute", top: 0, right: 15, paddingTop: 10 }}
+        >
+        </div>
+        <Header
+          word={word}
+          setWord={setWord}
+          setDefinition={setDefinition}
+        />
+        {definition && (<Definitions word={word} definition={definition} />)}
+      </Container>
     </div>
   );
 }
