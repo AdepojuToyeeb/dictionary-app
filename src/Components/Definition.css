@@ -16,12 +16,11 @@
 }
 
 @media (max-width: 900px) {
-    .audio{
-         position: absolute;
-         margin-top: 20px;
-  /* right: 60px; */
-  width: 30%;
-    }
+  .audio {
+    position: absolute;
+    margin-top: 20px;
+    width: 30%;
+  }
   .meanings {
     overflow: scroll;
     overflow-x: hidden;
@@ -29,13 +28,11 @@
   }
 }
 .header {
-    text-transform: capitalize;
-    display: flex;
+  text-transform: capitalize;
+  display: flex;
 }
 
 .audio {
   position: absolute;
-  /* right: 60px; */
-margin-top: 20px;
-  
+  margin-top: 20px;
 }

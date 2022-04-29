@@ -6,7 +6,6 @@ const Define = ({ item }) => {
       <h4>Definitions</h4>
       {item.definitions.map((define) => {
       
-      console.log(define)
     return (
       <>
         <div

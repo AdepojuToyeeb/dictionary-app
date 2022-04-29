@@ -6,7 +6,6 @@ const Synonyms = ({ item }) => {
       <>
       <h4>Synonyms</h4>
       {item.synonyms.map((synonym) => {
-    console.log(synonym);
     return (
       <>
         <div

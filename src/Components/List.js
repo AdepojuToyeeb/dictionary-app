@@ -5,7 +5,6 @@ import './List.css'
 
 const List = ({ mean }) => {
   return mean.map((item, index) => {
-    console.log(item);
     return (
       <>
         <h2 className="speech-header" key={index}>{item.partOfSpeech}</h2>

@@ -29,7 +29,6 @@ const Header = ({
           <TextField
             className="search"
             id="filled-basic"
-            // value={word}
             label="Search a Word"
             onChange={(e) => handleText(e.target.value)}
           />
